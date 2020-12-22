@@ -11,13 +11,9 @@ CONFIG = {
     "user_id": os.environ.get('user_id', None)
 }
 
-LOG_FILENAME = "app.log"
-
 
 def main():
     logging.basicConfig(
-        filename=LOG_FILENAME,
-        filemode='w',
         format='%(name)s - %(levelname)s - %(message)s',
         level=logging.DEBUG
     )
