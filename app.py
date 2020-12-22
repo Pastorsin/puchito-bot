@@ -1,18 +1,19 @@
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy import StreamListener
-import tweepy
+from tweepy import API
+
+from translate import Translator
 
 import logging
 
-from translate import Translator
 
 class TranslateReplyStreamListener(StreamListener):
 
     def __init__(self, auth, user_to_reply, src_lang="es", dest_lang="it"):
         super(StreamListener, self).__init__()
 
-        self.api = tweepy.API(auth)
+        self.api = API(auth)
         self.user_to_reply = user_to_reply
 
         self.translator = Translator(from_lang=src_lang, to_lang=dest_lang)
@@ -38,6 +39,7 @@ class TranslateReplyStreamListener(StreamListener):
             logging.debug(f"REPLY: {reply_text}")
 
         return True
+
 
 class App():
 
