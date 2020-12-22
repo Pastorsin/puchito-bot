@@ -139,3 +139,4 @@ cython_debug/
 
 # Config files
 config.ini
+.env
