@@ -1,7 +1,7 @@
 import os
 import logging
 
-import App
+from app import App
 
 CONFIG = {
     "consumer_key": os.environ.get('consumer_key', None),
