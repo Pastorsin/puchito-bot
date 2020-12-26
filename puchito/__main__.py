@@ -1,7 +1,10 @@
 import os
 import logging
 
-from app import App
+import sys
+
+from .app import App
+
 
 CONFIG = {
     "consumer_key": os.environ.get('consumer_key', None),
@@ -17,6 +20,10 @@ def main():
         format='%(name)s - %(levelname)s - %(message)s',
         level=logging.DEBUG
     )
+
+    if not all(CONFIG.values()):
+        logging.error("Invalid configuration, check environment variables.")
+        sys.exit(1)
 
     logging.debug("Starting app")
 
